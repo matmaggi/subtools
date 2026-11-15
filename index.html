@@ -70,8 +70,9 @@ body{
   width:52px;height:52px;border-radius:10px;
   display:grid;place-items:center;
   background:#000;color:var(--sub);
-  font-weight:900;font-size:1.15rem;letter-spacing:-.03em;
+  font-weight:900;font-size:1.15rem;letter-spacing:-.03em;overflow:hidden;
 }
+.mark svg{width:100%;height:100%;display:block}
 .name{font-weight:700;font-size:1.2rem;letter-spacing:-.01em}
 .desc{color:var(--muted);font-size:.95rem}
 .tag{
@@ -175,6 +176,13 @@ const TOOLS = [
   }
 ];
 
+const LOGOS = {
+  "RevTitles": "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><rect fill=\"#000000\" width=\"64\" height=\"64\" rx=\"16\"/><rect fill=\"#ffd84a\" x=\"11\" y=\"14\" width=\"24\" height=\"5\" rx=\"2.5\" opacity=\".6\"/><rect fill=\"#ffd84a\" x=\"11\" y=\"25\" width=\"40\" height=\"6\" rx=\"3\"/><rect fill=\"#ffd84a\" x=\"11\" y=\"36\" width=\"30\" height=\"6\" rx=\"3\" opacity=\".85\"/><circle fill=\"#ffd84a\" cx=\"46\" cy=\"46\" r=\"12\" stroke=\"#000000\" stroke-width=\"3\"/><path fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M40.5 46.5l4 4 7-8\" stroke-width=\"3.4\"/></svg>",
+  "SearchTitles": "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><rect fill=\"#000000\" width=\"64\" height=\"64\" rx=\"16\"/><rect fill=\"#ffd84a\" x=\"12\" y=\"12\" width=\"40\" height=\"5\" rx=\"2.5\"/><rect fill=\"#ffd84a\" x=\"12\" y=\"21\" width=\"26\" height=\"5\" rx=\"2.5\" opacity=\".6\"/><circle fill=\"none\" stroke=\"#ffd84a\" stroke-linecap=\"round\" stroke-linejoin=\"round\" cx=\"27\" cy=\"41\" r=\"10\" stroke-width=\"4.5\"/><path fill=\"none\" stroke=\"#ffd84a\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M35 49L47 59\" stroke-width=\"5\"/></svg>",
+  "Ler-gendas": "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><rect fill=\"#000000\" width=\"64\" height=\"64\" rx=\"16\"/><rect fill=\"#ffd84a\" x=\"13\" y=\"22\" width=\"6\" height=\"14\" rx=\"3\"/><rect fill=\"#ffd84a\" x=\"23\" y=\"11\" width=\"6\" height=\"30\" rx=\"3\"/><rect fill=\"#ffd84a\" x=\"33\" y=\"15\" width=\"6\" height=\"22\" rx=\"3\"/><rect fill=\"#ffd84a\" x=\"43\" y=\"23\" width=\"6\" height=\"12\" rx=\"3\"/><rect fill=\"#ffd84a\" x=\"12\" y=\"47\" width=\"40\" height=\"4.5\" rx=\"2.25\"/><rect fill=\"#ffd84a\" x=\"20\" y=\"55\" width=\"24\" height=\"4.5\" rx=\"2.25\"/></svg>",
+  "Comparador de Legendas": "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><rect fill=\"#000000\" width=\"64\" height=\"64\" rx=\"16\"/><rect fill=\"#ffd84a\" x=\"11\" y=\"14\" width=\"18\" height=\"5\" rx=\"2.5\"/><rect fill=\"#ffd84a\" x=\"11\" y=\"24\" width=\"14\" height=\"5\" rx=\"2.5\"/><rect fill=\"#ffd84a\" x=\"11\" y=\"34\" width=\"18\" height=\"5\" rx=\"2.5\"/><rect fill=\"#ffd84a\" x=\"35\" y=\"14\" width=\"18\" height=\"5\" rx=\"2.5\"/><rect fill=\"#ffd84a\" x=\"35\" y=\"24\" width=\"18\" height=\"5\" rx=\"2.5\" opacity=\".55\"/><rect fill=\"#ffd84a\" x=\"35\" y=\"34\" width=\"18\" height=\"5\" rx=\"2.5\"/><path fill=\"none\" stroke=\"#ffd84a\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M20 49H44M26 44L20 49L26 54M38 44L44 49L38 54\" stroke-width=\"3.5\"/></svg>",
+  "ExcelTitles": "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><rect fill=\"#000000\" width=\"64\" height=\"64\" rx=\"16\"/><rect fill=\"#ffd84a\" x=\"14\" y=\"16\" width=\"36\" height=\"8\" rx=\"2\" opacity=\".55\"/><rect fill=\"none\" stroke=\"#ffd84a\" stroke-linecap=\"round\" stroke-linejoin=\"round\" x=\"12\" y=\"14\" width=\"40\" height=\"36\" rx=\"5\" stroke-width=\"3.5\"/><path fill=\"none\" stroke=\"#ffd84a\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M12 32H52M12 41H52M26 24V50M38 24V50\" stroke-width=\"3\"/></svg>"
+};
 const list = document.getElementById("list");
 const empty = document.getElementById("empty");
 const q = document.getElementById("q");
@@ -191,7 +199,7 @@ function render(items){
   list.innerHTML = items.map(t => `
     <li>
       <a class="tool" href="${esc(t.url)}" rel="noopener">
-        <div class="mark" aria-hidden="true">${esc(initials(t.name))}</div>
+        <div class="mark" aria-hidden="true">${LOGOS[t.name] || esc(initials(t.name))}</div>
         <div class="info">
           <div class="name">${esc(t.name)}</div>
           <div class="desc">${esc(t.desc)}</div>
