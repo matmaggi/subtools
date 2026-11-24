@@ -90,6 +90,7 @@ body{
 .empty{color:var(--muted);padding:24px 4px}
 footer{margin-top:40px;color:var(--muted);font-size:.85rem;text-align:center}
 footer a{color:var(--sub);text-decoration:underline;text-underline-offset:3px}
+footer .pix{color:var(--sub);font-weight:500;user-select:all;overflow-wrap:anywhere}
 footer a:hover{text-decoration-thickness:2px}
 footer a:focus-visible{outline:2px solid var(--sub);outline-offset:3px;border-radius:2px}
 
@@ -141,7 +142,7 @@ footer a:focus-visible{outline:2px solid var(--sub);outline-offset:3px;border-ra
   <ul class="tools" id="list"></ul>
   <p class="empty" id="empty" hidden>Nenhuma ferramenta encontrada. Tente outro termo.</p>
 
-  <footer>Ideia desenvolvida por <a href="https://www.matheusmaggi.com/" target="_blank" rel="noopener">Matheus Maggi</a> e executada com o auxílio do Claude.</footer>
+  <footer>Ideia desenvolvida por <a href="https://www.matheusmaggi.com/" target="_blank" rel="noopener">Matheus Maggi</a> e executada com o auxílio do Claude.<br>Você gostou das ferramentas ou achou útil? Faz um PIX! <span class="pix">5a08fa27-b8f4-4935-9857-6b03fb63248a</span></footer>
 </main>
 
 <script>
@@ -215,7 +216,7 @@ const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'
 function render(items){
   list.innerHTML = items.map(t => `
     <li>
-      <a class="tool" href="${esc(t.url)}" target="_blank" rel="noopener">
+      <a class="tool" href="${esc(t.url)}">
         <div class="mark" aria-hidden="true">${LOGOS[t.name] || esc(initials(t.name))}</div>
         <div class="info">
           <div class="name">${esc(t.name)}</div>
