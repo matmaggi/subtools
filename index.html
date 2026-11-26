@@ -4,7 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ferramentas de legendagem</title>
-<meta name="description" content="Ferramentas para revisar, buscar, comparar e organizar legendas.">
+<meta name="description" content="Ferramentas gratuitas para revisar, buscar, comparar e organizar legendas: RevTitles, SearchTitles, LexiSub, Ler-gendas, TranscriAÇÃO, Comparador de Legendas e ExcelTitles.">
+<link rel="canonical" href="https://matmaggi.github.io/subtools/">
+<!-- prévia ao compartilhar (WhatsApp, LinkedIn, Facebook, X, Telegram…) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ferramentas de legendagem">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://matmaggi.github.io/subtools/">
+<meta property="og:title" content="Ferramentas de legendagem">
+<meta property="og:description" content="Revise, busque, compare e organize legendas: 7 ferramentas gratuitas que rodam no navegador.">
+<meta property="og:image" content="https://matmaggi.github.io/subtools/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ferramentas de legendagem: vídeo com legendas amarelas e linha do tempo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ferramentas de legendagem">
+<meta name="twitter:description" content="Revise, busque, compare e organize legendas: 7 ferramentas gratuitas que rodam no navegador.">
+<meta name="twitter:image" content="https://matmaggi.github.io/subtools/og-image.png">
+<meta name="theme-color" content="#0f1318">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23000%22%2F%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2221%22%20fill%3D%22none%22%20stroke%3D%22%23ffd84a%22%20stroke-width%3D%224%22%2F%3E%3Cpath%20d%3D%22M27%2022.5v19l16-9.5z%22%20fill%3D%22%23ffd84a%22%2F%3E%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,7 +95,7 @@ body{
 .desc{color:var(--muted);font-size:.95rem}
 .tag{
   font-size:.8rem;color:var(--sub);border:1px solid #5a4f1c;
-  padding:2px 10px;border-radius:999px;white-space:nowrap;justify-self:center;
+  padding:2px 10px;border-radius:999px;white-space:nowrap;justify-self:end;
 }
 .tool .info{min-width:0}
 .go{
@@ -86,7 +104,24 @@ body{
   color:var(--muted);transition:transform .15s,color .15s,border-color .15s;
 }
 .tool:hover .go{color:var(--sub);border-color:var(--sub);transform:translateX(3px)}
-.side{display:grid;grid-template-columns:116px 36px;align-items:center;gap:14px}
+.side{display:grid;grid-template-columns:116px 26px 36px;align-items:center;gap:14px}
+.tool{position:relative}
+/* ===== balão "?" com o README de cada ferramenta ===== */
+.ajuda{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;border:1px solid var(--line);color:var(--muted);font-weight:700;font-size:.9rem;cursor:help;user-select:none;transition:color .15s,border-color .15s}
+.ajuda:hover,.ajuda:focus-visible{color:var(--sub);border-color:var(--sub);outline:none}
+.ajuda-box{position:fixed;top:16px;left:16px;z-index:50;width:420px;max-width:calc(100vw - 32px);max-height:calc(100vh - 32px);overflow:auto;padding:14px 18px;
+  background:#12171d;color:var(--text);border:1px solid var(--line);border-top:3px solid var(--sub);border-radius:12px;box-shadow:0 16px 40px rgba(0,0,0,.55);
+  font-size:.92rem;font-weight:400;line-height:1.55;text-align:justify;hyphens:none;-webkit-hyphens:none;word-break:normal;overflow-wrap:normal;cursor:auto;
+  visibility:hidden;opacity:0;transition:opacity .12s ease .3s,visibility 0s linear .42s}
+.ajuda:hover .ajuda-box,.ajuda:focus .ajuda-box,.ajuda:focus-within .ajuda-box,.ajuda-box:hover{visibility:visible;opacity:1;transition:opacity .12s ease 0s,visibility 0s linear 0s}
+.ajuda-box h2{color:var(--sub);font-size:1.1rem;font-weight:900;margin:0 0 6px;text-align:left}
+.ajuda-box h3{font-size:1.05rem;font-weight:700;margin:16px 0 4px;text-align:left}
+.ajuda-box h4{font-size:.95rem;font-weight:700;margin:12px 0 2px;text-align:left}
+.ajuda-box p{margin:6px 0}
+.ajuda-box ul{margin:4px 0;padding-left:22px}
+.ajuda-box li{margin:3px 0}
+.ajuda-box b{color:#fff}
+.ajuda-box code{background:#0a0d11;border:1px solid var(--line);border-radius:4px;padding:0 4px;font-size:.85em}
 .empty{color:var(--muted);padding:24px 4px}
 footer{margin-top:40px;color:var(--muted);font-size:.85rem;text-align:center}
 footer a{color:var(--sub);text-decoration:underline;text-underline-offset:3px}
@@ -99,10 +134,10 @@ footer a:focus-visible{outline:2px solid var(--sub);outline-offset:3px;border-ra
   .mark{width:44px;height:44px}
   .hero{grid-template-columns:1fr}
   .art{display:none}
-  .side{grid-column:1 / -1;grid-template-columns:1fr 36px}
+  .side{grid-column:1 / -1;grid-template-columns:1fr 26px 36px}
 }
 @media (prefers-reduced-motion:reduce){
-  .tool,.go{transition:none}
+  .tool,.go,.ajuda{transition:none}
 }
 </style>
 </head>
@@ -150,43 +185,43 @@ footer a:focus-visible{outline:2px solid var(--sub);outline-offset:3px;border-ra
 const TOOLS = [
   {
     name: "RevTitles",
-    desc: "Verificação ortográfica de legendas e revisão por IA",
+    desc: "Verificação ortográfica, padronização de legendas e revisão por IA",
     url: "https://matmaggi.github.io/revtitles/",
     tag: "Revisão"
   },
   {
     name: "SearchTitles",
-    desc: "Buscador de termos em legendas (template e tradução) para contexto",
+    desc: "Buscador de termos em várias legendas, com contexto e tradução",
     url: "https://matmaggi.github.io/searchtitles/",
     tag: "Busca"
   },
   {
     name: "LexiSub",
-    desc: "Glossário inteligente para tradução e legendagem (KNP)",
+    desc: "Glossário inteligente de nomes e termos (KNP)",
     url: "https://matmaggi.github.io/lexisub/",
     tag: "Glossário"
   },
     {
     name: "Ler-gendas",
-    desc: "Ouça o texto das suas legendas para encontrar erros",
+    desc: "Ouça sua legenda em voz alta e marque o que corrigir",
     url: "https://matmaggi.github.io/ler-gendas/",
     tag: "Áudio"
   },
   {
     name: "TranscriAÇÃO",
-    desc: "Transcreva áudio ou vídeo e crie legendas",
+    desc: "Transcreva áudio ou vídeo em legendas prontas para editar",
     url: "https://matmaggi.github.io/TranscriACAO/",
     tag: "Transcrição"
   },
   {
     name: "Comparador de Legendas",
-    desc: "Compare as mudanças de duas legendas em detalhes",
+    desc: "Compare as mudanças de duas versões de uma legenda em detalhes",
     url: "https://matmaggi.github.io/comparadordelegendas/",
     tag: "Comparação"
   },
   {
     name: "ExcelTitles",
-    desc: "Gere uma planilha com as legendas (template e tradução) alinhadas",
+    desc: "Template e tradução alinhados lado a lado em uma planilha",
     url: "https://matmaggi.github.io/exceltitles/",
     tag: "Planilha"
   }
@@ -201,6 +236,8 @@ const LOGOS = {
   "Comparador de Legendas": "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><rect fill=\"#000000\" width=\"64\" height=\"64\" rx=\"16\"/><rect fill=\"#ffd84a\" x=\"11\" y=\"14\" width=\"18\" height=\"5\" rx=\"2.5\"/><rect fill=\"#ffd84a\" x=\"11\" y=\"24\" width=\"14\" height=\"5\" rx=\"2.5\"/><rect fill=\"#ffd84a\" x=\"11\" y=\"34\" width=\"18\" height=\"5\" rx=\"2.5\"/><rect fill=\"#ffd84a\" x=\"35\" y=\"14\" width=\"18\" height=\"5\" rx=\"2.5\"/><rect fill=\"#ffd84a\" x=\"35\" y=\"24\" width=\"18\" height=\"5\" rx=\"2.5\" opacity=\".55\"/><rect fill=\"#ffd84a\" x=\"35\" y=\"34\" width=\"18\" height=\"5\" rx=\"2.5\"/><path fill=\"none\" stroke=\"#ffd84a\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M20 49H44M26 44L20 49L26 54M38 44L44 49L38 54\" stroke-width=\"3.5\"/></svg>",
   "ExcelTitles": "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><rect fill=\"#000000\" width=\"64\" height=\"64\" rx=\"16\"/><rect fill=\"#ffd84a\" x=\"14\" y=\"16\" width=\"36\" height=\"8\" rx=\"2\" opacity=\".55\"/><rect fill=\"none\" stroke=\"#ffd84a\" stroke-linecap=\"round\" stroke-linejoin=\"round\" x=\"12\" y=\"14\" width=\"40\" height=\"36\" rx=\"5\" stroke-width=\"3.5\"/><path fill=\"none\" stroke=\"#ffd84a\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M12 32H52M12 41H52M26 24V50M38 24V50\" stroke-width=\"3\"/></svg>"
 };
+/* resumo de cada ferramenta (o parágrafo de apresentação do README), mostrado no balão "?" */
+const READMES = {"RevTitles": "<h2>RevTitles<\/h2><p>O RevTitles revisa um arquivo de legenda inteiro e aponta erros de ortografia, gramática, pontuação, formatação e tempo, seguindo o guia de estilo da Netflix. Também compara a tradução com o original usando IA. Funciona no navegador, sem instalação.<\/p>", "SearchTitles": "<h2>SearchTitles<\/h2><p>O SearchTitles pesquisa palavras e frases em várias legendas ao mesmo tempo, mostra as falas ao redor e, se você carregar a tradução, exibe a versão traduzida da mesma fala. É útil para manter a consistência em séries e conferir como um termo foi usado antes.<\/p>", "LexiSub": "<h2>LexiSub<\/h2><p>O LexiSub analisa as legendas de um projeto com IA e cria um glossário com personagens (e gênero), lugares, organizações, títulos e expressões, com sugestão de tradução e notas. A cada episódio novo, ele mostra só os termos novos para você aprovar.<\/p>", "Ler-gendas": "<h2>Ler-gendas<\/h2><p>O Ler-gendas transforma a legenda (ou qualquer texto) em um texto corrido e lê em voz alta, frase por frase, destacando o trecho que está sendo lido. Ouvir o texto ajuda a perceber palavras trocadas, repetidas, concordância e frases que não soam naturais.<\/p>", "TranscriAÇÃO": "<h2>TranscriAÇÃO<\/h2><p>O TranscriAÇÃO transforma o áudio de um arquivo em legendas com tempo, quebras de linha e duração já ajustados. Dá para usar serviços online ou rodar o Whisper direto no seu computador, de graça.<\/p>", "Comparador de Legendas": "<h2>Comparador de Legendas<\/h2><p>O Comparador de Legendas coloca a versão original e a modificada lado a lado, pareia as legendas automaticamente e classifica cada diferença. Serve para conferir revisões, entender o que o QC alterou ou checar atualizações de template.<\/p>", "ExcelTitles": "<h2>ExcelTitles<\/h2><p>O ExcelTitles junta a legenda template (inglês) e a legenda final (português) em um arquivo .xlsx com três colunas: tempo inicial, template e tradução. É útil para entregas que pedem planilha, revisões, relatórios e glossários.<\/p>"};
 const list = document.getElementById("list");
 const empty = document.getElementById("empty");
 const q = document.getElementById("q");
@@ -223,7 +260,8 @@ function render(items){
           <div class="desc">${esc(t.desc)}</div>
         </div>
         <div class="side">
-          ${t.tag ? `<span class="tag">${esc(t.tag)}</span>` : ""}
+          ${t.tag ? `<span class="tag">${esc(t.tag)}</span>` : "<span></span>"}
+          ${READMES[t.name] ? `<span class="ajuda" tabindex="0" role="button" aria-label="Sobre o ${esc(t.name)}">?<span class="ajuda-box" role="tooltip">${READMES[t.name]}</span></span>` : "<span></span>"}
           <span class="go" aria-hidden="true">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
           </span>
@@ -239,6 +277,26 @@ q.addEventListener("input", () => {
   const term = norm(q.value.trim());
   render(TOOLS.filter(t => norm(`${t.name} ${t.desc} ${t.tag || ""}`).includes(term)));
 });
+
+/* o balão abre à esquerda do "?", na altura dele e sempre dentro da tela (sem precisar rolar a página);
+   se não houver espaço à esquerda (tela estreita), abre centralizado na tela */
+function placeBox(h){
+  const box = h.querySelector(".ajuda-box"); if (!box) return;
+  const r = h.getBoundingClientRect(), vw = document.documentElement.clientWidth, vh = innerHeight, m = 16, gap = 12;
+  const room = r.left - gap - m, w = Math.min(420, room);
+  if (w >= 280){ box.style.width = w + "px"; box.style.left = (r.left - gap - w) + "px"; }
+  else { const ww = Math.min(420, vw - 2 * m); box.style.width = ww + "px"; box.style.left = ((vw - ww) / 2) + "px"; }
+  const bh = Math.min(box.scrollHeight, vh - 2 * m);
+  box.style.top = Math.max(m, Math.min(r.top + r.height / 2 - bh / 2, vh - m - bh)) + "px";
+}
+list.addEventListener("mouseover", e => { const h = e.target.closest(".ajuda"); if (h && !e.target.closest(".ajuda-box")) placeBox(h); });
+list.addEventListener("focusin", e => { const h = e.target.closest(".ajuda"); if (h) placeBox(h); });
+addEventListener("scroll", () => { const h = document.querySelector(".ajuda:hover, .ajuda:focus-within"); if (h) placeBox(h); }, {passive: true});
+addEventListener("resize", () => { const h = document.querySelector(".ajuda:hover, .ajuda:focus-within"); if (h) placeBox(h); });
+
+/* o "?" fica dentro do link do cartão: clicar nele (ou no balão) não abre a ferramenta */
+list.addEventListener("click", e => { if (e.target.closest(".ajuda")) { e.preventDefault(); e.stopPropagation(); } });
+list.addEventListener("keydown", e => { if (e.target.closest && e.target.closest(".ajuda") && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); e.stopPropagation(); } });
 
 render(TOOLS);
 </script>
